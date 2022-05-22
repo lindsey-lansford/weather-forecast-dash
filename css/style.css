@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.title {
+    text-align: center;
+    border: 3px solid black;
+    padding: 15px;
+}
+
+.searchBox {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    padding: 5px 7px;
+    border: 2px solid black;
+}
+
+#search-title {
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+
+#search-text {
+    border-radius: 10%;
+    border: 1px solid gray;
+    width: 100%;
+}
+
+#searchBtn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+#todays-forecast {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    border: 2px solid orange;
+}
+
+#fiveday-forecast {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+#daybox {
+    display: flex;
+    flex-direction: column;
+    margin: 4px;
+    justify-content: left;
+    align-items: left;
+    border: 2px solid red;
+}

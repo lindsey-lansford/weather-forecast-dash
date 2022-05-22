@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <header>
+        <h1 class="title">Weather Dashboard</h1>
+    </header>
+    
+    <aside class="searchBox">
+        <form action="" method="get">
+            <label for="search-bar" id="search-title">Search for a City:</label><br>
+            <input type="search" id="search-text"><br>
+            <input type="button" id="searchBtn" value="Search">
+        </form>
+    </aside>
+    
+        <section id="todays-forecast">
+            <h1 id="city" id="todays-date" id="forecast-icon"></h1>CityName, CurrentDate, Icon</h1>
+            <p id="current-temp">Temp:</p>
+            <p id="wind-mph">Wind:</p>
+            <p id="humid">Humidity:</p>
+            <p id="uv-number">UV Index:<button type="text"></button></p>
+        </section>
+
+        <section id="fiveday-forecast">
+            <h2>5-Day Forecast:</h2>
+            <div id="daybox">
+                <h3 id="date1">Date1</h3>
+                <i id="forecast-icon1">IconForecast1</i>
+                <p id="temp1">Temp:1</p>
+                <p id="wind1">Wind:1</p>
+                <p id="humid1">Humidity:1</p>
+            </div>
+            <div id="daybox">
+                <h3 id="date2">Date2</h3>
+                <i id="forecast-icon2">IconForecast2</i>
+                <p id="temp2">Temp:2</p>
+                <p id="wind2">Wind:2</p>
+                <p id="humid2">Humidity:2</p>
+            </div>
+            <div id="daybox">
+                <h3 id="date3">Date3</h3>
+                <i id="forecast-icon3">IconForecast3</i>
+                <p id="temp3">Temp:3</p>
+                <p id="wind3">Wind:3</p>
+                <p id="humid3">Humidity:3</p>
+            </div>
+            <div id="daybox">
+                <h3 id="date4">Date4</h3>
+                <i id="forecast-icon4">IconForecast4</i>
+                <p id="temp4">Temp:4</p>
+                <p id="wind4">Wind:4</p>
+                <p id="humid4">Humidity:4</p>
+            </div>
+            <div id="daybox">
+                <h3 id="date5">Date5</h3>
+                <i id="forecast-icon5">IconForecast5</i>
+                <p id="temp5">Temp:5</p>
+                <p id="wind5">Wind:5</p>
+                <p id="humid5">Humidity:5</p>
+            </div>
+        </section>
+
+    <script src="./scripts/script.js"></script>
+</body>
+</html>

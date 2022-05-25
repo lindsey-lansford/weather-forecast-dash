@@ -5,8 +5,13 @@
 }
 .title {
     text-align: center;
-    border: 3px solid black;
+    border: 1px solid black;
     padding: 15px;
+}
+
+.container {
+    display: flex;
+    align-content: space-around;
 }
 
 .searchBox {
@@ -14,16 +19,15 @@
     align-items: left;
     justify-content: left;
     padding: 5px 7px;
-    border: 2px solid black;
+    width: 25%;
 }
 
 #search-title {
-    font-size: 1.7rem;
+    font-size: 1.4rem;
     font-weight: bold;
 }
 
 #search-text {
-    border-radius: 10%;
     border: 1px solid gray;
     width: 100%;
 }
@@ -33,18 +37,31 @@
     margin-top: 10px;
 }
 
+.content-right {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 #todays-forecast {
     display: flex;
     flex-direction: column;
     justify-content: left;
-    border: 2px solid orange;
+    margin: 1rem;
+    border: 1px solid black;
+}
+
+.fiveday-title {
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 #fiveday-forecast {
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
-    border: 2px solid black;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 #daybox {
@@ -52,6 +69,7 @@
     flex-direction: column;
     margin: 4px;
     justify-content: left;
-    align-items: left;
-    border: 2px solid red;
+    border: 2px solid black;
+    color: white;
+    background-color: navy;
 }

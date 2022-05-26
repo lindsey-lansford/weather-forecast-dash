@@ -12,7 +12,7 @@ function getForecast(event) {
   event.preventDefault();
   let city = searchBarEl.value;
     let queryURL =
-        "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
+        "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
   fetch(queryURL)
     .then(function (response) {
       return response.json();
@@ -23,9 +23,9 @@ function getForecast(event) {
       let weatherIcon = data.weather[0].icon;
       let weatherImg = document.getElementById("weather-icon");
 
-      weatherImg.setAttribute("src", "http://openweathermap.org/img/wn/" + weatherIcon + ".png");
-      weatherImg.style.width = "50px";
-      weatherImg.style.height = "50px";
+      weatherImg.setAttribute("src", "https://openweathermap.org/img/wn/" + weatherIcon + ".png");
+      weatherImg.style.width = "70px";
+      weatherImg.style.height = "70px";
 
       cityDateIconEl.textContent = data.name + " " + currentDate;
       currentTempEl.textContent = "Temp: " + data.main.temp + " °F";

@@ -7,7 +7,8 @@ const windSpeedEl = document.getElementById("wind-mph");
 const humidityEl = document.getElementById("humid");
 const uvIndexEl = document.getElementById("uv-number");
 
-function showForecast(event) {
+
+function getForecast(event) {
   event.preventDefault();
   let city = searchBarEl.value;
     let queryURL =
@@ -18,16 +19,46 @@ function showForecast(event) {
     })
     .then(function (data) {
         console.log(data);
-        console.log(data.main.temp)
-        console.log(data.name)
-        console.log(data.main.humidity)
-        let currentDate = moment.unix(data.dt).format("MMMM Do, YYYY");
-        console.log(currentDate)
-        cityDateIconEl.textContent = data.name + " " + currentDate; 
-        console.log(data.weather[0].icon)
-        currentTempEl.textContent = "Temp: " + data.main.temp + " °F";
-        windSpeedEl.textContent = "Wind: " + data.wind.speed + " Mph"
-        humidityEl.textContent = "Humidity: " + data.main.humidity + "%"
+      let currentDate = moment.unix(data.dt).format("MMMM Do, YYYY");
+      let weatherIcon = data.weather[0].icon;
+      let weatherImg = document.getElementById("weather-icon");
+
+      weatherImg.setAttribute("src", "http://openweathermap.org/img/wn/" + weatherIcon + ".png");
+      weatherImg.style.width = "50px";
+      weatherImg.style.height = "50px";
+
+      cityDateIconEl.textContent = data.name + " " + currentDate;
+      currentTempEl.textContent = "Temp: " + data.main.temp + " °F";
+      windSpeedEl.textContent = "Wind: " + data.wind.speed + " Mph";
+      humidityEl.textContent = "Humidity: " + data.main.humidity + "%";
     });
 }
-searchBtn.addEventListener("click", showForecast);
+searchBtn.addEventListener("click", getForecast);
+
+// function getFiveDay(event) {
+//   let lon = data.coord.lon;
+//   let lat = data.coord.lat;
+//   let requestUrl = "https://api.openweathermap.org/data/2.5/onecall?" + lat + lon + "&appid=" + APIKey + "&units=imperial"
+// }
+
+
+// let futureForecast = function(event) {
+//   event.preventDefault();
+//   let cityInput = cityName.value;
+//   var currentUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${apiKey}&units=imperial`;
+//   fetch(currentUrl)
+//       .then(function (response) {
+//           return response.json();
+//       })
+//       .then(function (currentData) {
+//           console.log(currentData);
+//
+//           fetch(requestUrl)
+//               .then(function (response) {
+//                   return response.json();
+//               })
+//               .then(function (data) {
+//                   console.log(data);
+//               });
+//           })
+// }

@@ -6,19 +6,29 @@ const currentTempEl = document.getElementById("current-temp");
 const windSpeedEl = document.getElementById("wind-mph");
 const humidityEl = document.getElementById("humid");
 const uvIndexEl = document.getElementById("uv-number");
+const fiveDayEl = document.getElementById("day-box");
+
 
 
 function getForecast(event) {
   event.preventDefault();
   let city = searchBarEl.value;
-    let queryURL =
-        "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
+    let queryURL ="https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
   fetch(queryURL)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-        console.log(data);
+      console.log(data);
+      var requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude={part}&appid=${APIKey}&units=imperial&cnt=5`;
+      fetch(requestUrl)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          console.log(data);
+      })
+
       let currentDate = moment.unix(data.dt).format("MMMM Do, YYYY");
       let weatherIcon = data.weather[0].icon;
       let weatherImg = document.getElementById("weather-icon");
@@ -35,30 +45,5 @@ function getForecast(event) {
 }
 searchBtn.addEventListener("click", getForecast);
 
-// function getFiveDay(event) {
-//   let lon = data.coord.lon;
-//   let lat = data.coord.lat;
-//   let requestUrl = "https://api.openweathermap.org/data/2.5/onecall?" + lat + lon + "&appid=" + APIKey + "&units=imperial"
-// }
 
 
-// let futureForecast = function(event) {
-//   event.preventDefault();
-//   let cityInput = cityName.value;
-//   var currentUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${apiKey}&units=imperial`;
-//   fetch(currentUrl)
-//       .then(function (response) {
-//           return response.json();
-//       })
-//       .then(function (currentData) {
-//           console.log(currentData);
-//
-//           fetch(requestUrl)
-//               .then(function (response) {
-//                   return response.json();
-//               })
-//               .then(function (data) {
-//                   console.log(data);
-//               });
-//           })
-// }

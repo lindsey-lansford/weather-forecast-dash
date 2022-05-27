@@ -6,23 +6,21 @@
 .title {
     text-align: center;
     border: 1px solid black;
-    padding: 15px;
+    padding: 9px;
 }
 
 .container {
     display: flex;
-    align-content: space-around;
-    justify-content: center;
 }
 
 .searchBox {
     display: flex;
+    flex-direction: column;
     align-items: left;
     justify-content: left;
-    padding-right: 3rem;
+    padding-right: 1rem;
     padding-top: 1rem;
-    padding-left: .3rem;
-
+    padding-left: .5rem;
 }
 
 #search-title {
@@ -33,6 +31,7 @@
 #search-text {
     border: 1px solid gray;
     width: 100%;
+    margin-top: .7rem;
 }
 
 #searchBtn {
@@ -40,47 +39,55 @@
     margin-top: 10px;
 }
 
-.content-right {
+#past-searched-items {
     display: flex;
     flex-direction: column;
+    margin-top: 1.8rem;
+}
+
+#saved-city-btn {
+    margin: .4rem;
 }
 
 #todays-forecast {
     display: flex;
     flex-direction: column;
     justify-content: left;
-    margin-top: 1rem;
-    padding-left: .3rem;
-    padding: 1rem;
-    /* border: 1px solid black; */
+    padding: .7rem;
+    line-height: 1.7rem;
 }
 
 #weather-icon {
     background-color: rgb(171, 166, 166);
     border-radius: 50%;
-    margin-bottom: .5rem;
-    margin-top: .5rem;
+    margin-bottom: .3rem;
+    margin-top: .3rem;
 }
 
-.fiveday-title {
-    margin: 1rem;
-
+#fiveday-title {
+    margin-left: .7rem;
+    margin-top: 2rem;
 }
 
 #fiveday-forecast {
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: .5rem;
+    margin-right: .5rem;
 }
 
 #daybox {
     display: flex;
     flex-direction: column;
-    margin: 4px;
-    justify-content: left;
-    /* border: 2px solid black; */
-    /* color: white; */
-    /* background-color: navy; */
+    padding: 1rem;
+}
+
+#five-day-img {
+    background-color: rgb(171, 166, 166);
+    border-radius: 50%;
+    margin-bottom: .3rem;
+    margin-top: .3rem;
+    width: 55px;
+    height: 55px;
 }

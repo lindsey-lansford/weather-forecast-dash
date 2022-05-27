@@ -7,54 +7,45 @@ const windSpeedEl = document.getElementById("wind-mph");
 const humidityEl = document.getElementById("humid");
 const uvIndexEl = document.getElementById("uv-number");
 const fiveDayEl = document.getElementById("fiveday-forecast");
+const fiveDayTitleEl = document.getElementById("fiveday-title");
+const citySearchList = JSON.parse(localStorage.getItem("cityData")) || [];
 
-function fiveDayForecast(lat, lon) {
-  let currentUVI 
-      var requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${APIKey}&units=imperial&cnt=5`;
-      fetch(requestUrl)
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (data) {
-          console.log(data);
-          let objTwo = data
-          currentUVI = (objTwo.current.uvi);
-          uvIndexEl.textContent = "UV Index: " + currentUVI;
-          // currentUVI.style.border = "green" NEED TO MAKE CURRENTUVI LOOK LIKE A BTN//
-          // console.log(data.daily[0])
-          // fiveDayTemp.textContent = "Temp: " + data.daily[0].temp.day;
-          // console.log(fiveDayTemp)
-          for (let i = 1; i < 6; i++) {
-            var box = document.createElement("div")
-            box.id = "daybox"
-            var date = document.createElement("h3")
-            date.textContent = moment.unix(data.daily[i].dt).format("MMMM Do, YYYY");
-            box.appendChild(date)
-            var icon = document.createElement("img")
-            icon.src = "https://openweathermap.org/img/wn/" + data.daily[i].weather[0].icon + ".png"
-            box.appendChild(icon)
-            var temp = document.createElement("p")
-            temp.textContent = "Temp: " + data.daily[i].temp.day
-            box.appendChild(temp)
-            var wind = document.createElement("p")
-            wind.textContent = "Wind: " + data.daily[i].wind_speed
-            box.appendChild(wind)
-            var humid = document.createElement("p")
-            humid.textContent = "Humidity: " + data.daily[i].humidity
-            box.appendChild(humid)
-            fiveDayEl.appendChild(box)
-            console.log(box);
-            
-          }
-      })
+function renderCitySearch() {
+  for (let i = 0; i < citySearchList.length; i++) {
+    let citiesSearched = citySearchList[i];
+    
+    let pastSearchEl = document.getElementById("past-searched-items");
+    let savedCityBtn = document.createElement("button");
+    savedCityBtn.id = "saved-city-btn"
+    savedCityBtn.textContent = citiesSearched;
+    pastSearchEl.append(savedCityBtn);
+    savedCityBtn.style.textTransform = "capitalize";
+
+    savedCityBtn.setAttribute("value", citiesSearched);
+
+    savedCityBtn.addEventListener("click", function () {
+      getForecast(this.value);
+    })
+
+  }
 }
 
 function getForecast(event) {
   event.preventDefault();
   let city = searchBarEl.value;
+  //clears the search bar input text
+  searchBarEl.value = "";
+  //setting key: values in localstorage
+  if (citySearchList.indexOf(city) === -1) {
+    citySearchList.push(city);
+    localStorage.setItem("cityData", JSON.stringify(citySearchList));
+  }
+
     let queryURL ="https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey + "&units=imperial";
   fetch(queryURL)
     .then(function (response) {
+      if (response.ok) {
+      }
       return response.json();
     })
     .then(function (data) {
@@ -67,15 +58,62 @@ function getForecast(event) {
       weatherImg.style.width = "70px";
       weatherImg.style.height = "70px";
 
-      cityDateIconEl.textContent = data.name + " " + currentDate;
-      currentTempEl.textContent = "Temp: " + data.main.temp + " °F";
-      windSpeedEl.textContent = "Wind: " + data.wind.speed + " Mph";
+      cityDateIconEl.textContent = data.name + ":"  + " " + currentDate;
+      currentTempEl.textContent = "Temp: " + data.main.temp + "°F";
+      windSpeedEl.textContent = "Wind: " + data.wind.speed + " MPH";
       humidityEl.textContent = "Humidity: " + data.main.humidity + "%";
+      
       fiveDayForecast(data.coord.lat, data.coord.lon)
+
+      fiveDayEl.innerHTML = "";
+      fiveDayTitleEl.innerHTML = "";
+
     })
 }
+
+function fiveDayForecast(lat, lon) {
+      var requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly,alerts&appid=${APIKey}&units=imperial&cnt=5`;
+      fetch(requestUrl)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          console.log(data);
+          let currentUVI = (data.current.uvi);
+          uvIndexEl.textContent = "UV Index: " + currentUVI;
+
+          var title = document.createElement("h2");
+          title.textContent = "5-Day Forecast: ";
+          fiveDayTitleEl.appendChild(title);
+          // currentUVI.style.border = "green" NEED TO MAKE CURRENTUVI LOOK LIKE A BTN//
+          for (let i = 1; i < 6; i++) {
+            var boxFiveDay = document.createElement("div");
+            boxFiveDay.id = "daybox";
+            var date = document.createElement("h3");
+            date.textContent = moment.unix(data.daily[i].dt).format("ddd. MMMM D");
+            boxFiveDay.appendChild(date);
+            
+            var icon = document.createElement("img");
+            icon.id = "five-day-img";
+            icon.src = "https://openweathermap.org/img/wn/" + data.daily[i].weather[0].icon + ".png";
+            boxFiveDay.appendChild(icon);
+
+            var temp = document.createElement("p")
+            temp.textContent = "Temp: " + data.daily[i].temp.day + "°F";
+            boxFiveDay.appendChild(temp)
+            var wind = document.createElement("p")
+            wind.textContent = "Wind: " + data.daily[i].wind_speed + " MPH";
+            boxFiveDay.appendChild(wind)
+            var humid = document.createElement("p")
+            humid.textContent = "Humidity: " + data.daily[i].humidity + "%";
+            boxFiveDay.appendChild(humid)
+            fiveDayEl.appendChild(boxFiveDay)
+          }
+      })
+}
+renderCitySearch();
+
 searchBtn.addEventListener("click", getForecast);
-//NEED TO PULL IN 5DAY FORECAST & REMOVE THE HTML TEXT
-//NEED TO SET LOCAL STORAGE AND GET THE CITY NAMES TO SAVE UNDER THE SEARCH BAR
+
 
 

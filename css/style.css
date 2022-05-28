@@ -2,10 +2,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Merriweather', serif;
 }
 .title {
     text-align: center;
     border: 1px solid black;
+    color: white;
+    background-color: rgb(29, 29, 143);
     padding: 9px;
 }
 
@@ -32,6 +35,7 @@
     border: 1px solid gray;
     width: 100%;
     margin-top: .7rem;
+    padding: .2rem;
 }
 
 #searchBtn {
@@ -47,18 +51,21 @@
 
 #saved-city-btn {
     margin: .4rem;
+    background-color: teal;
+    color: white;
 }
 
 #todays-forecast {
     display: flex;
     flex-direction: column;
     justify-content: left;
+    margin: 1rem;
     padding: .7rem;
     line-height: 1.7rem;
 }
 
 #weather-icon {
-    background-color: rgb(171, 166, 166);
+    background-color: rgb(224, 224, 230);
     border-radius: 50%;
     margin-bottom: .3rem;
     margin-top: .3rem;
@@ -81,10 +88,11 @@
     display: flex;
     flex-direction: column;
     padding: 1rem;
+    line-height: 1.6rem;
 }
 
 #five-day-img {
-    background-color: rgb(171, 166, 166);
+    background-color: rgb(224, 224, 230);
     border-radius: 50%;
     margin-bottom: .3rem;
     margin-top: .3rem;

@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-family: 'Merriweather', serif;
 }
+
 .title {
     text-align: center;
     border: 1px solid black;
@@ -69,6 +70,20 @@
     border-radius: 50%;
     margin-bottom: .3rem;
     margin-top: .3rem;
+}
+
+.low-uv {
+    background-color: green;
+    color: white;
+    width: 10rem;
+}
+.mod-uv {
+    background-color: yellow;
+    color: black;
+}
+.high-uv {
+    background-color: red;
+    color: white;
 }
 
 #fiveday-title {

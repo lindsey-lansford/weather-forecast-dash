@@ -1,10 +1,11 @@
 ## Weather Dashboard
 
-This web application's purpose is to generate the current weather and also display the future 5-day forecast.
+This web application's purpose is to generate the current weather and the future 5-day forecast by city.
 
 ## How it Works
+This
 
-*
+* **OpenWeatherAPI**: I used Geocoding API to pull the {city} current & extended forecast data, and OneCall to pull the {lat} & {lon} data for the UVI to display. 
 
 *
 

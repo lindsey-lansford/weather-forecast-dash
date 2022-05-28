@@ -5,7 +5,6 @@ const cityDateIconEl = document.getElementById("city-date-icon");
 const currentTempEl = document.getElementById("current-temp");
 const windSpeedEl = document.getElementById("wind-mph");
 const humidityEl = document.getElementById("humid");
-// const uvIndexEl = document.getElementById("uv-number");
 const fiveDayEl = document.getElementById("fiveday-forecast");
 const fiveDayTitleEl = document.getElementById("fiveday-title");
 const citySearchList = JSON.parse(localStorage.getItem("cityData")) || [];
@@ -81,12 +80,12 @@ function fiveDayForecast(lat, lon) {
           let currentUVI = data.current.uvi;
           uvIndexEl.textContent = "UV Index: " + currentUVI;
 
-          if (currentUVI < 3 || currentUVI === 0) {
-                    currentUVI.setAttribute = ("style", "backgroundColor: green")
+          if (currentUVI < 3) {
+                uvIndexEl.classList.add("low-uv")
           } else if (currentUVI >= 3 && currentUVI < 6) {
-                    currentUVI.setAttribute = ("style", "backgroundColor: yellow")
+                uvIndexEl.classList.add("mod-uv")
           } else {
-                  currentUVI.setAttribute = ("style", "backgroundcolor: red")
+                uvIndexEl.classList.add("high-uv")
           }
           
           //creating the 5-day forecast title and adding it to parent div

@@ -9,7 +9,7 @@ This application fetches data from the OpenWeatherAPI with my specific APIKey va
 
 * **HTML**: I built very little in the HTML for this application. Mainly built <divs> and #ids to be used in the CSS stylesheet and JavaScript.  However, I did add a favicon link & a google fonts link to give my application a unique style.
 
-* **CSS**: Within the stylesheet, I added many flexbox features to the <divs> for the application to become responsive accross several devices for the user.
+* **CSS**: Within the stylesheet, I added many flexbox features to the <divs> for the application to become responsive across several devices for the user.
 
 * **JavaScript**: The script file makes all the magic happen when the search button is clicked. Fetching the API URLs using my APIKey and other specific parameters I requested, created the functionality for the current weather and extended forecast to display. I built a for loop to run 5x for the extended forecast, and used IDs to pull the current forecast.
 

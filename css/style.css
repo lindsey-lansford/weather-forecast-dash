@@ -75,15 +75,17 @@
 .low-uv {
     background-color: green;
     color: white;
-    width: 10rem;
+    width: 8.7rem;
 }
 .mod-uv {
     background-color: yellow;
     color: black;
+    width: 8.7rem;
 }
 .high-uv {
     background-color: red;
     color: white;
+    width: 8.7rem;
 }
 
 #fiveday-title {

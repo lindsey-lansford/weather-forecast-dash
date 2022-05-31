@@ -1,6 +1,7 @@
 const APIKey = "feb4f2d7e33865553a2c80b01d7dd193";
 const searchBarEl = document.querySelector("#search-text");
 const searchBtn = document.querySelector("#searchBtn");
+const currentForecast = document.getElementById("todays-forecast");
 const cityDateIconEl = document.getElementById("city-date-icon");
 const currentTempEl = document.getElementById("current-temp");
 const windSpeedEl = document.getElementById("wind-mph");
@@ -82,6 +83,9 @@ fetch(queryURL)
       //clears the div elements when user searches a new city without refreshing the browser
       fiveDayEl.innerHTML = "";
       fiveDayTitleEl.innerHTML = "";
+      
+        
+  
     });
 }
 
@@ -97,9 +101,9 @@ function fiveDayForecast(lat, lon) {
       let currentUVI = data.current.uvi;
       uvIndexEl.textContent = "UV Index: " + currentUVI;
 
-      if (currentUVI < 3) {
+      if (currentUVI < 3 || currentUVI === 0) {
         uvIndexEl.classList.add("low-uv");
-      } else if (currentUVI >= 3 && currentUVI < 6) {
+      } else if (currentUVI >= 3 && currentUVI <= 6) {
         uvIndexEl.classList.add("mod-uv");
       } else {
         uvIndexEl.classList.add("high-uv");

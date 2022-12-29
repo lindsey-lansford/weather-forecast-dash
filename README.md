@@ -1,4 +1,4 @@
-## Weather Dashboard
+# Weather Dashboard
 
 This web application's purpose is to generate the current weather and the future 5-day forecast by city.
 
@@ -18,3 +18,10 @@ The following screenshot shows the web application's appearance:
 ![](./images/screenshot.png)
 
 To view this web application, [click here](https://lindsey-lansford.github.io/weather-forecast-dash/)
+
+## Questions
+
+Please reach out with any questions you may have about this application.
+
+* :octocat: GitHub: [@lindsey-lansford](https://github.com/lindsey-lansford)
+* :envelope: Email: [lindsey.lansford@gmail.com](mailto:lindsey.lansford@gmail.com)
